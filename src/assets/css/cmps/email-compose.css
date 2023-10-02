@@ -71,3 +71,8 @@
   /* text-wrap: nowrap; */
   /* overflow: scroll; */
 }
+
+.compose-text {
+  margin-right: 20px;
+  font-weight: 500;
+}

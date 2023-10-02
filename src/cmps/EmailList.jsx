@@ -5,27 +5,25 @@ import { EmailPreview } from "./EmailPreview";
 import { emailService } from "../services/email.service";
 
 const loggedinUser = emailService.getLoggedinUser();
-export function EmailList({
-  emails,
-  onMailRead,
-  onStarred,
-  onDelete,
-  onEnterEmail,
-}) {
+export function EmailList({ emails, onDelete, onUpdateEmail }) {
   const params = useParams();
 
   const inbox = emails.filter(
-    (email) => email.to === loggedinUser.email && email.sentAt > 0
+    (email) =>
+      email.to === loggedinUser.email &&
+      email.sentAt > 0 &&
+      email.removedAt === null
   );
   const starred = emails.filter(
     (email) =>
       email.isStarred === true &&
       email.to === loggedinUser.email &&
-      email.sentAt > 0
+      email.sentAt > 0 &&
+      email.removedAt === null
   );
   const sent = emails.filter((email) => email.from === loggedinUser.email);
   const trash = emails.filter(
-    (email) => email.removedAt !== null && email.from === loggedinUser.email
+    (email) => email.removedAt > 0 && email.to === loggedinUser.email
   );
   const drafts = emails.filter((email) => !email.sentAt);
 
@@ -55,10 +53,8 @@ export function EmailList({
           <li key={email.id}>
             <EmailPreview
               email={email}
-              onMailRead={onMailRead}
-              onStarred={onStarred}
               onDelete={onDelete}
-              onEnterEmail={onEnterEmail}
+              onUpdateEmail={onUpdateEmail}
               folder={params.folder}
             />
           </li>

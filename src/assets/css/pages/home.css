@@ -1,12 +1,50 @@
 .home {
-    text-align: center;
+  text-align: center;
+  background-color: #f7f8fc;
 }
 
 .home h1 {
-    font-size: 40px;
-    margin: 10px;
+  font-size: 40px;
+  margin: 10px;
 }
 
 .home img {
-    width: 500px;
+  width: 500px;
+}
+
+.home-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gmail-logo {
+  margin-top: 100px;
+}
+
+.log-in--btn {
+  padding-top: 10px;
+  width: 200px;
+  height: 75px;
+  border-radius: 20px;
+  background-color: rgb(69, 69, 240);
+  color: rgb(241, 239, 239);
+  border: 1px solid rgb(30, 30, 162);
+  font-size: x-large;
+}
+
+.log-in--btn:hover {
+  text-decoration: none;
+  background-color: rgb(50, 50, 224);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sign-in {
+  font-size: medium;
+  font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+}
+
+.logd-in-username {
+  font-size: medium;
+  margin-top: 5px;
 }

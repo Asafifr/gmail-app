@@ -22,18 +22,43 @@ ul {
 }
 
 .main-email-container:hover {
-  /* height: 38px; */
   border: 0.5px solid rgb(188, 187, 187);
   border-bottom: 1px solid rgb(108, 108, 108);
-  /* border-radius: 20px; */
 }
-/* .email-list--item {
-  border-bottom: 1px solid rgb(142, 139, 139);
-  list-style-type: none;
-} */
 
-.email-action-btns--td {
+.email-prev--container {
   margin-left: 30px;
+  width: 180px;
+  height: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.main-email-container:hover .email-prev-action--btns {
+  margin-right: 10px;
+  display: flex;
+  gap: 13px;
+  padding-left: 30px;
+}
+
+.main-email-container:hover .email-prev--date {
+  display: none;
+}
+
+.email-prev-action--btns {
+  display: none;
+}
+
+.email-prev--date {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  gap: 5px;
+}
+
+.email-prev--date > p {
+  font-weight: 600;
+  align-items: end;
 }
 
 .bold {
@@ -50,7 +75,7 @@ ul {
 .email-index--container {
   display: grid;
   height: 90%;
-  grid-template-columns: 1fr 2fr 2fr 1fr;
+  grid-template-columns: 3fr 7fr 7fr 0.2fr;
   grid-template-rows: 60px 2fr 2fr 1fr;
 }
 
@@ -59,14 +84,15 @@ ul {
   \\\\\\\\\\\\\\\\\\\ */
 
 .email-subject--container {
-  width: 140px;
+  width: 170px;
 }
 
 .email-body--container {
   margin-left: 30px;
 }
+
 .email-preview--link-container {
-  width: 70%;
+  width: 75%;
 }
 
 /* \\\\\\\\\\\\\\\\\\\
@@ -78,23 +104,12 @@ ul {
   margin-right: 10px;
 }
 
-.mail-checkbox {
-  color: #ca0c4c;
-  background-color: #053454;
-}
-
-tbody:first-child {
-  border-top-right-radius: 40px;
-  /* border: 2px solid green; */
-  /* z-index: 3; */
-}
-
 .from-subject-container {
   display: flex;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis " [..]";
 }
+
 .email-from-container {
   align-self: center;
   width: 190px;
@@ -128,7 +143,6 @@ tbody:first-child {
 .aside {
   grid-column: 1 /2;
   grid-row: 2 /4;
-  /* border: 2px solid yellow; */
   background-color: #f7f8fc;
 }
 
@@ -136,7 +150,6 @@ tbody:first-child {
   height: 80px;
   grid-column: 2 /4;
   grid-row: 1 /2;
-  /* border: 2px solid green; */
 }
 
 .mail-list--container {
@@ -144,10 +157,12 @@ tbody:first-child {
   grid-column: 2 /4;
   grid-row: 2 /4;
   justify-content: start;
-  /* border: 2px solid purple; */
 }
 
-/* LOGO */
+.mail-icons {
+  width: 20px;
+  height: 20px;
+}
 
 .section-logo {
   grid-column: 1 /1;
@@ -189,4 +204,8 @@ tbody:first-child {
   filter: grayscale(80%);
   width: 15px;
   height: 15px;
+}
+
+.draft {
+  color: #dd4c39;
 }

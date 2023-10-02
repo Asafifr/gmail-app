@@ -21,6 +21,7 @@ export function EmailCompose() {
   }, [draft]);
 
   async function save() {
+    if (!draft.body && !draft.to && !draft.subject) return;
     const newDraft = await emailService.save(draft);
     if (!draft.id) {
       setDraft((prev) => ({ ...prev, ...newDraft }));

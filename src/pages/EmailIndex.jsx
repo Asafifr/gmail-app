@@ -28,55 +28,36 @@ export function EmailIndex() {
     }
   }
 
-  async function onMailRead(emailId) {
+  async function onUpdateEmail(email) {
     try {
-      const mailToUpdate = await emailService.getById(emailId);
-      const updatedMail = {
-        ...mailToUpdate,
-        isRead: !mailToUpdate.isRead,
-      };
-      await emailService.save(updatedMail);
-      loadEmails();
+      const updatedEmail = await emailService.save(email);
+      setEmails((prevEmails) =>
+        prevEmails.map((email) =>
+          email.id === updatedEmail.id ? updatedEmail : email
+        )
+      );
     } catch (err) {
-      console.log("Error", err);
+      console.log("Error updating email on server", err);
     }
   }
 
-  async function onStarred(emailId) {
-    try {
-      const mailToUpdate = await emailService.getById(emailId);
-      const updatedMail = {
-        ...mailToUpdate,
-        isStarred: !mailToUpdate.isStarred,
+  async function onDelete(emailToDelete) {
+    const updatedMailList = emails.filter(
+      (email) => email.id !== emailToDelete.id
+    );
+    if (emailToDelete.removedAt === null) {
+      const updatedEmail = {
+        ...emailToDelete,
+        removedAt: Date.now(),
       };
-      await emailService.save(updatedMail);
-      loadEmails();
-    } catch (err) {
-      console.log("Error", err);
-    }
-  }
-
-  async function onEnterEmail(emailId) {
-    try {
-      const mailToUpdate = await emailService.getById(emailId);
-      const updatedMail = {
-        ...mailToUpdate,
-        isRead: true,
-      };
-      await emailService.save(updatedMail);
-      loadEmails();
-    } catch (err) {
-      console.log("Error", err);
-    }
-  }
-
-  async function onDelete(emailId) {
-    const updatedMailList = emails.filter((email) => email.id !== emailId);
-    try {
-      await emailService.remove(emailId);
-      setEmails(updatedMailList);
-    } catch (err) {
-      console.log("Erorr", err);
+      onUpdateEmail(updatedEmail);
+    } else {
+      try {
+        await emailService.remove(emailToDelete.id);
+        setEmails(updatedMailList);
+      } catch (err) {
+        console.log("Erorr", err);
+      }
     }
   }
 
@@ -96,10 +77,8 @@ export function EmailIndex() {
           <section className="mail-list--container">
             <EmailList
               emails={emails}
-              onMailRead={onMailRead}
-              onStarred={onStarred}
               onDelete={onDelete}
-              onEnterEmail={onEnterEmail}
+              onUpdateEmail={onUpdateEmail}
             />
           </section>
           {params.folder === "compose" && <EmailCompose />}

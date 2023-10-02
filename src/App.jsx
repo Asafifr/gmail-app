@@ -10,11 +10,11 @@ export function App() {
     <Router>
       <section className="app--container">
         <header className="item1">
-          <nav>
+          {/* <nav>
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
             <Link to="/email/inbox">Email</Link>
-          </nav>
+          </nav> */}
         </header>
         <main className="item2">
           <Routes>
@@ -30,9 +30,9 @@ export function App() {
             </Route>
           </Routes>
         </main>
-        <footer className="item3">
+        {/* <footer className="item3">
           <section>robotRights 2023 &copy;</section>
-        </footer>
+        </footer> */}
       </section>
     </Router>
   );

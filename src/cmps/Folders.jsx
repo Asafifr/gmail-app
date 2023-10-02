@@ -9,7 +9,7 @@ const buttons = [
 ];
 
 export function Folders({ emails }) {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState("inbox");
   const params = useParams();
 
   const unreadEmailsCount = emails.filter(
@@ -17,12 +17,19 @@ export function Folders({ emails }) {
       email.isRead !== true && email.sentAt && email.to === "user@appsus.com"
   ).length;
 
+  const draftsEmailsCount = emails.filter(
+    (email) => email.sentAt === "" || email.sentAt === null
+  ).length;
   function setActiveButton(id) {
     setActive(id);
   }
 
   useEffect(() => {
-    if (!params.folder && !params.emailId) setActive(1);
+    if (!params.folder && !params.emailId) {
+      setActive("inbox");
+    } else {
+      setActive(params.folder);
+    }
   }, [params]);
 
   return (
@@ -31,21 +38,32 @@ export function Folders({ emails }) {
         <span className="compose-img--span">
           <img className="compose-img" src="../../public/Pencil.png" />
         </span>
-        Compose
+        <p className="compose-text">Compose</p>
       </Link>
       {buttons.map((button) => (
         <Link
           to={`/email/${button.name.toLowerCase()}`}
           key={button.id}
-          className={`side-panel-btn ${active === button.id ? "active" : ""}`}
-          onClick={() => setActiveButton(button.id)}
+          className={`side-panel-btn ${
+            active === button.name.toLowerCase() ? "active" : ""
+          }`}
+          onClick={() => setActiveButton(button.name.toLowerCase())}
         >
-          <img src={button.img} alt={button.name} />
-          <p className={active === button.id ? "active" : ""}>
+          <img src={button.img} alt={button.name} className="img-side--btn" />
+          <p
+            className={`inbox-btn ${
+              active === button.name.toLowerCase() ? "active" : ""
+            }`}
+          >
             {button.name}
             <span className="emails-count">
               {button.name === "Inbox" && unreadEmailsCount > 0
                 ? unreadEmailsCount
+                : ""}
+            </span>
+            <span>
+              {button.name === "Drafts" && draftsEmailsCount > 0
+                ? draftsEmailsCount
                 : ""}
             </span>
           </p>
