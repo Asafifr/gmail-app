@@ -44,22 +44,24 @@ export function EmailList({ emails, onDelete, onUpdateEmail }) {
   }
 
   return (
-    <div className="email-preview-main--container">
+    <>
       <div className="head-btns">
         <h3> need to add buttons</h3>
       </div>
-      <ul>
-        {emailsToRender.map((email) => (
-          <li key={email.id}>
-            <EmailPreview
-              email={email}
-              onDelete={onDelete}
-              onUpdateEmail={onUpdateEmail}
-              folder={params.folder}
-            />
-          </li>
-        ))}
-      </ul>
-    </div>
+      <div className="email-preview-main--container">
+        <ul>
+          {emailsToRender.map((email) => (
+            <li key={email.id}>
+              <EmailPreview
+                email={email}
+                onDelete={onDelete}
+                onUpdateEmail={onUpdateEmail}
+                folder={params.folder}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }

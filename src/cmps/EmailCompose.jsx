@@ -1,3 +1,7 @@
+import closeBtn from "../../public/close.png";
+import minimize from "../../public/minimize.png";
+import openInFull from "../../public/open-in-full.png";
+
 import { Link, useNavigate } from "react-router-dom";
 import { emailService } from "../services/email.service";
 import { useEffect, useState } from "react";
@@ -58,9 +62,24 @@ export function EmailCompose() {
       <div className="new-message">
         <p className="new-message-title">New Message</p>
 
-        <Link to={"/email/inbox"}>
-          <h3 className="new-message-close-btn">X</h3>
-        </Link>
+        <div className="compose-action-btns">
+          {/* <Link to={"/email/inbox"}>
+            <h3 className="new-message-close-btn">X</h3>
+          </Link> */}
+          <span>
+            <img src={minimize} alt="minimize" className="compose-action-btn" />
+          </span>
+          <span>
+            <img
+              src={openInFull}
+              alt="openInFull"
+              className="compose-action-btn"
+            />
+          </span>
+          <Link to={"/email/inbox"}>
+            <img src={closeBtn} alt="closeBtn" className="compose-action-btn" />
+          </Link>
+        </div>
       </div>
       <div className="new-message-recipients">
         <label>Recipients: </label>{" "}
@@ -70,15 +89,19 @@ export function EmailCompose() {
           onChange={(e) => updateDraft(e)}
           value={draft.to}
         />{" "}
+        <hr className="compose-hr-line" />
       </div>
+
       <div className="new-message-subject">
-        <label>Subject: </label>{" "}
+        <label>Subject: </label>
+
         <input
           type="text"
           name="subject"
           value={draft.subject}
           onChange={(e) => updateDraft(e)}
         ></input>
+        <hr className="compose-hr-line" />
       </div>
       <div className="body-input-container">
         <input

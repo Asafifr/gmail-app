@@ -6,6 +6,7 @@ import trash from "../../public/trash.png";
 import mailRead from "../../public/mail-read.svg";
 import mailUnread from "../../public/mail-unread.svg";
 import snooze from "../../public/snooze.png";
+import important from "../../public/important.png";
 
 const date = new Date();
 const month = [
@@ -64,7 +65,7 @@ export function EmailPreview({ email, onDelete, folder, onUpdateEmail }) {
     <>
       <div className={`main-email-container ${email.isRead ? "" : "unread"} `}>
         <input type="checkbox" name="1" className="mail-checkbox"></input>
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
         <div className={`star block--item--20 ${email.isRead ? "" : "bold"}`}>
           <span onClick={onStarred}>
             {email.isStarred ? (
@@ -74,7 +75,7 @@ export function EmailPreview({ email, onDelete, folder, onUpdateEmail }) {
             )}
           </span>
         </div>
-
+        <img src={important} className="important" />
         <div
           className={`email-from-container block--item--40 ${
             email.sentAt ? "" : "draft"

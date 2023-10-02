@@ -9,7 +9,7 @@ export function App() {
   return (
     <Router>
       <section className="app--container">
-        <header className="item1">
+        <header className="header">
           {/* <nav>
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>

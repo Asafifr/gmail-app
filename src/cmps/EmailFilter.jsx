@@ -1,5 +1,5 @@
 // import "../../public/glass.png";
-
+import user from "../../public/user.jpeg";
 import { useEffect, useState } from "react";
 
 export function EmailFilter({ onSetFilter }) {
@@ -25,6 +25,7 @@ export function EmailFilter({ onSetFilter }) {
           onChange={(e) => setFilter({ body: e.target.value })}
         />
       </div>
+      <img src={user} className="user-img" />
     </div>
   );
 }
