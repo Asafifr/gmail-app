@@ -62,18 +62,19 @@
   border-bottom-right-radius: 20px;
   font-weight: 700;
   background-color: #d3e2fd;
-  /* width: 95%; */
 }
 
 .emails-count {
-  font-size: smaller;
+  margin-right: 10px;
   color: black;
-  margin-left: 68%;
 }
 
 .inbox-btn {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   text-decoration: none;
+  color: black;
 }
 
 .img-side--btn {

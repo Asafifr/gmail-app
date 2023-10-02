@@ -17,7 +17,7 @@
   flex-grow: 1;
 }
 
-.app-header nav a:not(:last-child) {
+.app-header {
   margin-right: 10px;
 }
 

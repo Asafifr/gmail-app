@@ -3,7 +3,7 @@
 }
 
 html {
-  font-family: OpenSans, sans-serif;
+  font-family: "Google Sans", OpenSans, sans-serif;
   font-size: 14px;
   scroll-behavior: smooth;
 }
@@ -17,7 +17,7 @@ body {
     sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f7f8fc;
+  background-color: #f5f8fc;
 }
 
 img {

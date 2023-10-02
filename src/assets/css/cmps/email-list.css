@@ -57,7 +57,7 @@ ul {
 }
 
 .email-prev--date > p {
-  font-weight: 600;
+  font-weight: 400;
   align-items: end;
 }
 
@@ -74,9 +74,9 @@ ul {
 
 .email-index--container {
   display: grid;
-  height: 90%;
-  grid-template-columns: 3fr 7fr 7fr 0.2fr;
-  grid-template-rows: 60px 2fr 2fr 1fr;
+  height: 100%;
+  grid-template-columns: 256px 7fr 7fr 0.2fr;
+  grid-template-rows: 60px 2fr 5fr 0.1fr;
 }
 
 /* \\\\\\\\\\\\\\\\\\\
@@ -154,9 +154,11 @@ ul {
 
 .mail-list--container {
   width: 100%;
+  height: 100%;
   grid-column: 2 /4;
   grid-row: 2 /4;
   justify-content: start;
+  overflow-y: scroll;
 }
 
 .mail-icons {
@@ -191,6 +193,8 @@ ul {
 }
 
 .head-btns {
+  position: sticky;
+  top: 0;
   padding-top: 10px;
   padding-bottom: 30px;
   background-color: #fff;
@@ -198,6 +202,7 @@ ul {
   height: 30px;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+  z-index: 2;
 }
 
 .envelope-img {
@@ -208,4 +213,32 @@ ul {
 
 .draft {
   color: #dd4c39;
+}
+
+.from-email-field {
+  width: 200px;
+}
+
+/* width */
+.mail-list--container::-webkit-scrollbar {
+  width: 14px;
+  height: 10px;
+  background: #ac2121;
+}
+
+/* Track */
+.mail-list--container::-webkit-scrollbar-track {
+  background: #fff;
+  /* border-radius: 1px; */
+}
+
+/* Handle */
+.mail-list--container::-webkit-scrollbar-thumb {
+  border-radius: 0%;
+  border-right: 9px solid #ccc;
+  border-left: 6px solid #ffffff;
+}
+
+.mail-list--container::-webkit-scrollbar-thumb:hover {
+  background: #16a04e;
 }

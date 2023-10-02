@@ -80,7 +80,11 @@ export function EmailPreview({ email, onDelete, folder, onUpdateEmail }) {
             email.sentAt ? "" : "draft"
           }`}
         >
-          <p className={email.isRead || !email.sentAt ? "" : "bold"}>
+          <p
+            className={`from-email-field ${
+              email.isRead || !email.sentAt ? "" : "bold"
+            }`}
+          >
             {email.sentAt ? email.from : "Draft"}
           </p>
         </div>

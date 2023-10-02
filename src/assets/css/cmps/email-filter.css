@@ -6,7 +6,7 @@
   text-align: center;
   justify-content: start;
   margin-bottom: 10px;
-  /* margin-left: 10px; */
+  margin-top: 5px;
 }
 
 .search-box::placeholder {

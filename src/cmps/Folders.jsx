@@ -56,16 +56,13 @@ export function Folders({ emails }) {
             }`}
           >
             {button.name}
-            <span className="emails-count">
-              {button.name === "Inbox" && unreadEmailsCount > 0
-                ? unreadEmailsCount
-                : ""}
-            </span>
-            <span>
-              {button.name === "Drafts" && draftsEmailsCount > 0
-                ? draftsEmailsCount
-                : ""}
-            </span>
+
+            {button.name === "Inbox" && unreadEmailsCount > 0 && (
+              <span className="emails-count">{unreadEmailsCount}</span>
+            )}
+            {button.name === "Drafts" && draftsEmailsCount > 0 && (
+              <span className="emails-count">{draftsEmailsCount}</span>
+            )}
           </p>
         </Link>
       ))}
