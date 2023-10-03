@@ -4,6 +4,7 @@ import { Home } from "./pages/Home";
 import { AboutUs } from "./pages/AboutUs";
 import { EmailIndex } from "./pages/EmailIndex";
 import { EmailDetails } from "./cmps/EmailDetails";
+import { EmailCompose } from "./cmps/EmailCompose";
 
 export function App() {
   return (
@@ -21,9 +22,14 @@ export function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/email" element={<EmailIndex />}>
+              <Route
+                ///email/drafts/edit/e112
+                path="/email/:folder/:emailId"
+                element={<EmailCompose />}
+              />
               <Route path="/email/:folder" element={<EmailDetails />}>
                 <Route
-                  path="/email/:folder/:emailId"
+                  path="/email/:folder/details/:emailId"
                   element={<EmailDetails />}
                 />
               </Route>

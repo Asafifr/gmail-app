@@ -20,6 +20,10 @@ body {
   background-color: #f5f8fc;
 }
 
+textarea {
+  font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+}
+
 img {
   max-width: 100%;
 }

@@ -92,7 +92,10 @@ export function EmailPreview({ email, onDelete, folder, onUpdateEmail }) {
 
         <Link
           style={{ textDecoration: "none" }}
-          to={`/email/${folder}/${email.id}`}
+          ///email/:folder/details/:emailId
+          to={`/email/${folder}${folder === "drafts" ? "" : "/details"}/${
+            email.id
+          }`}
           className={`block--item--300 email-preview--link-container`}
           onClick={onEmailEnter}
         >

@@ -2,7 +2,7 @@ import closeBtn from "../../public/close.png";
 import minimize from "../../public/minimize.png";
 import openInFull from "../../public/open-in-full.png";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { emailService } from "../services/email.service";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
@@ -10,9 +10,21 @@ import { useRef } from "react";
 export function EmailCompose() {
   const navigate = useNavigate();
   const timoutRef = useRef();
+  const params = useParams();
+
+  console.log(params);
 
   const [draft, setDraft] = useState(emailService.createDraftEmail());
   const [fullSize, setFullSize] = useState(false);
+
+  useEffect(() => {
+    if (params.emailId) getEmailById();
+  }, []);
+
+  async function getEmailById() {
+    const email = await emailService.getById(params.emailId);
+    setDraft(email);
+  }
 
   useEffect(() => {
     if (timoutRef.current) {
@@ -88,7 +100,7 @@ export function EmailCompose() {
         </div>
       </div>
       <div className="new-message-recipients">
-        <label>Recipients: </label>{" "}
+        <label>To: </label>{" "}
         <input
           type="email"
           name="to"
@@ -110,7 +122,7 @@ export function EmailCompose() {
         <hr className="compose-hr-line" />
       </div>
       <div className="body-input-container">
-        <input
+        <textarea
           className="body-input"
           value={draft.body}
           type="text"
