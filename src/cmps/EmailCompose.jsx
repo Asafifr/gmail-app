@@ -12,6 +12,7 @@ export function EmailCompose() {
   const timoutRef = useRef();
 
   const [draft, setDraft] = useState(emailService.createDraftEmail());
+  const [fullSize, setFullSize] = useState(false);
 
   useEffect(() => {
     if (timoutRef.current) {
@@ -58,7 +59,12 @@ export function EmailCompose() {
   }
 
   return (
-    <form className="compose-main-container" onSubmit={(e) => formSubmit(e)}>
+    <form
+      className={`compose-main-container ${
+        fullSize ? "compose-full-size" : ""
+      }`}
+      onSubmit={(e) => formSubmit(e)}
+    >
       <div className="new-message">
         <p className="new-message-title">New Message</p>
 
@@ -69,7 +75,7 @@ export function EmailCompose() {
           <span>
             <img src={minimize} alt="minimize" className="compose-action-btn" />
           </span>
-          <span>
+          <span onClick={() => setFullSize((prev) => !prev)}>
             <img
               src={openInFull}
               alt="openInFull"
