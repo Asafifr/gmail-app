@@ -36,9 +36,6 @@ export function App() {
             </Route>
           </Routes>
         </main>
-        {/* <footer className="item3">
-          <section>robotRights 2023 &copy;</section>
-        </footer> */}
       </section>
     </Router>
   );

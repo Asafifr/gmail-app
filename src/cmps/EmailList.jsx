@@ -21,7 +21,9 @@ export function EmailList({ emails, onDelete, onUpdateEmail }) {
       email.sentAt > 0 &&
       email.removedAt === null
   );
-  const sent = emails.filter((email) => email.from === loggedinUser.email);
+  const sent = emails.filter(
+    (email) => email.from === loggedinUser.email && email.sentAt !== null
+  );
   const trash = emails.filter(
     (email) => email.removedAt > 0 && email.to === loggedinUser.email
   );
