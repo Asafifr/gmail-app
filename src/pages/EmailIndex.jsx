@@ -1,19 +1,40 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { EmailFilter } from "../cmps/EmailFilter";
 import { EmailList } from "../cmps/EmailList";
 import { emailService } from "../services/email.service";
 import { Folders } from "../cmps/Folders";
 import { Outlet, useParams } from "react-router-dom";
 import { EmailCompose } from "../cmps/EmailCompose";
+import { ComposeBtn } from "../cmps/ComposeBtn";
 
 export function EmailIndex() {
   const [emails, setEmails] = useState([]);
   const [filterdBy, setFilterBy] = useState(emailService.getDefaultFilter());
+  const [modal, setModal] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   const params = useParams();
 
   useEffect(() => {
     loadEmails();
   }, [filterdBy]);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+      if (windowWidth > 700) {
+        setModal(true);
+      } else {
+        setModal(false);
+      }
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
 
   function onSetFilter(fieldsToUpdate) {
     setFilterBy((prev) => ({ ...prev, ...fieldsToUpdate }));
@@ -66,11 +87,18 @@ export function EmailIndex() {
       <section className="section-logo">
         <Logo />
       </section>
-      <aside className="aside">
-        <Folders emails={emails} />
-      </aside>
+      {(windowWidth > 700 || modal === true) && (
+        <aside className="aside">
+          {" "}
+          <Folders emails={emails} setModal={setModal} modal={modal} />
+        </aside>
+      )}
       <section className="filter--container">
-        <EmailFilter onSetFilter={onSetFilter} />
+        <EmailFilter
+          onSetFilter={onSetFilter}
+          setModal={setModal}
+          modal={modal}
+        />
       </section>
       {!params.emailId && (
         <>
@@ -80,8 +108,11 @@ export function EmailIndex() {
               onDelete={onDelete}
               onUpdateEmail={onUpdateEmail}
             />
+            {!modal && <ComposeBtn />}
           </section>
-          {params.folder === "compose" && <EmailCompose />}
+          {params.folder === "compose" && (
+            <EmailCompose loadEmails={loadEmails} />
+          )}
         </>
       )}
       {params.emailId && (

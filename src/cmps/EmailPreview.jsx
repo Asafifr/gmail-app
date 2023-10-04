@@ -92,7 +92,6 @@ export function EmailPreview({ email, onDelete, folder, onUpdateEmail }) {
 
         <Link
           style={{ textDecoration: "none" }}
-          ///email/:folder/details/:emailId
           to={`/email/${folder}${folder === "drafts" ? "" : "/details"}/${
             email.id
           }`}

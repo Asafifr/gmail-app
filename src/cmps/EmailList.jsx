@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom";
 import "../assets/css/cmps/email-list.css";
 
+import refresh from "../../public/refresh.png";
+
 import { EmailPreview } from "./EmailPreview";
 import { emailService } from "../services/email.service";
+import { ComposeBtn } from "./ComposeBtn";
 
 const loggedinUser = emailService.getLoggedinUser();
 export function EmailList({ emails, onDelete, onUpdateEmail }) {
@@ -48,7 +51,13 @@ export function EmailList({ emails, onDelete, onUpdateEmail }) {
   return (
     <>
       <div className="head-btns">
-        <h3> need to add buttons</h3>
+        <input
+          type="checkbox"
+          name="1"
+          className="mail-checkbox top-bar-checkbox"
+        ></input>
+        <span className="checkmark"></span>
+        <img src={refresh} className="top-bat-refresh--btn"></img>
       </div>
       <div className="email-preview-main--container">
         <ul>

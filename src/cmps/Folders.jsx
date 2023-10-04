@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ComposeBtn } from "./ComposeBtn";
+
 const buttons = [
   { id: 1, name: "Inbox", img: "../../public/inbox.png" },
   { id: 2, name: "Starred", img: "../../public/star_baseline.png" },
@@ -8,7 +10,7 @@ const buttons = [
   { id: 5, name: "Trash", img: "../../public/trash.png" },
 ];
 
-export function Folders({ emails }) {
+export function Folders({ emails, setModal, modal }) {
   const [active, setActive] = useState("inbox");
   const params = useParams();
 
@@ -20,8 +22,10 @@ export function Folders({ emails }) {
   const draftsEmailsCount = emails.filter(
     (email) => email.sentAt === "" || email.sentAt === null
   ).length;
+
   function setActiveButton(id) {
     setActive(id);
+    setModal(false);
   }
 
   useEffect(() => {
@@ -33,13 +37,8 @@ export function Folders({ emails }) {
   }, [params]);
 
   return (
-    <div>
-      <Link to={`/email/compose`} className="compose-btn">
-        <span className="compose-img--span">
-          <img className="compose-img" src="../../public/Pencil.png" />
-        </span>
-        <p className="compose-text">Compose</p>
-      </Link>
+    <div className="main-folders-menu">
+      <ComposeBtn className="main-folder-compose-btn" />
       {buttons.map((button) => (
         <Link
           to={`/email/${button.name.toLowerCase()}`}

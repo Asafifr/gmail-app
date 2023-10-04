@@ -42,7 +42,6 @@ input:focus {
   justify-content: space-evenly;
   width: 40px;
   height: 40px;
-  /* border: 1px solid green; */
   margin-left: 5px;
   border-radius: 50%;
 }
@@ -57,4 +56,31 @@ input:focus {
   width: 35px;
   height: 35px;
   border-radius: 50%;
+}
+
+@media only screen and (max-width: 700px) {
+  .filter--container {
+    /* display: none;
+    position: absolute; */
+    display: flex;
+    align-items: center;
+  }
+
+  .search-outter--box {
+    /* justify-content: center; */
+    /* align-items: center; */
+    position: relative;
+    left: 60px;
+  }
+
+  .search-box {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    /* left: 90px; */
+  }
+
+  .user-img {
+    right: 20%;
+  }
 }

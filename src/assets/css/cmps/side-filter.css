@@ -37,7 +37,6 @@
 }
 
 .side-panel-btn {
-  /* width: 202px; */
   width: 95%;
   height: 32px;
   padding-left: 15px;
@@ -80,4 +79,41 @@
 .img-side--btn {
   margin-right: 10px;
   margin-left: 10px;
+}
+
+.main-folders-menu {
+  transform: translateY(2px);
+}
+
+@media only screen and (max-width: 700px) {
+  .compose-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #dee7ed;
+    border: none;
+    width: 147px;
+    height: 56px;
+    border-radius: 15px;
+    margin-left: 10px;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 400;
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .compose-btn:hover {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.148),
+      0 1px 3px 1px rgba(0, 0, 0, 0.188);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .main-folder-compose-btn {
+    display: none;
+  }
 }

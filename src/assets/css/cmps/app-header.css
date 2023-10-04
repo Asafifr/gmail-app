@@ -1,4 +1,4 @@
-/* .app-header {
+.app-header {
   background: rgb(243, 233, 215);
   color: black;
 }
@@ -23,7 +23,7 @@
 
 .app-header section.container > section {
   flex-grow: 1;
-} */
+}
 
 header {
   width: 0;

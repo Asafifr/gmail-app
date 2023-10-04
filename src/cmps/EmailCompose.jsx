@@ -7,7 +7,7 @@ import { emailService } from "../services/email.service";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 
-export function EmailCompose() {
+export function EmailCompose({ loadEmails }) {
   const navigate = useNavigate();
   const timoutRef = useRef();
   const params = useParams();
@@ -44,6 +44,7 @@ export function EmailCompose() {
       setDraft((prev) => ({ ...prev, ...newDraft }));
       console.log("newDraft", newDraft);
     }
+    loadEmails();
   }
 
   function updateDraft(e) {
@@ -85,17 +86,25 @@ export function EmailCompose() {
             <h3 className="new-message-close-btn">X</h3>
           </Link> */}
           <span>
-            <img src={minimize} alt="minimize" className="compose-action-btn" />
+            <img
+              src={minimize}
+              alt="minimize"
+              className="compose-action-btn minimize-btn"
+            />
           </span>
           <span onClick={() => setFullSize((prev) => !prev)}>
             <img
               src={openInFull}
               alt="openInFull"
-              className="compose-action-btn"
+              className="compose-action-btn open-full-btn"
             />
           </span>
           <Link to={"/email/inbox"}>
-            <img src={closeBtn} alt="closeBtn" className="compose-action-btn" />
+            <img
+              src={closeBtn}
+              alt="closeBtn"
+              className="compose-action-btn close-btn"
+            />
           </Link>
         </div>
       </div>
